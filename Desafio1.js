@@ -1,32 +1,28 @@
 class ProductManager {
-    constructor(title,description,price,thumbnail,code,stock,id){
-        this.products = []
-        this.title = title
-        this.description = description
-        this.price = price
-        this.thumbnail = thumbnail
-        this.code = code
-        this.stock = stock
-        this.id = id
+    constructor(){
+        this.products = [];
     }
+ 
+//Methods  
 
-    
-//Methods
+    addProduct ({title,description,price,thumbnail,code,stock,id}) {
 
-    addProduct (product) {
 
-        product.id = Math.floor(Math.random()*5000) ;
+            id = Math.floor(Math.random()*5000);
 
-        for(const item of this.products){
-            if (product.title === "" || product.description === "" || product.price < 0 || product.thumbnail === "" || product.stock < 0)
-            {return {ERROR: "Please complete all fields."}}
-            else
-            if (item.code === product.code) 
-            {return{ERROR: "This product already exists."}}
-        }
         
-        this.products.push(product);
-        return this.products;
+            if (title === "" || description === "" || price < 0 || thumbnail === "" || stock < 0)
+            {return{ERROR: "Please complete all fields."}}
+
+            for(const item of this.products){
+            if (item.code === code) 
+            {return{ERROR: "This product already exists."}}
+ 
+            }
+
+    this.products.push({title,description,price,thumbnail,code,stock,id});
+    return this.products;
+        
     }
 
     getProducts(){
